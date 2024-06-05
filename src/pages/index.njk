@@ -1,0 +1,41 @@
+---
+permalink: /index.html
+title: 'Testing Flamed Fury'
+---
+
+<article class="region wrapper flow prose">
+
+  <details>
+    <summary><h2>Want To Read</h2></summary>
+    <div class="grid" style="--grid-min-item-size: 10rem">
+    {% for book in bookshelf | reverse %}
+      {% if book.status == 'want to read' %}
+        <div class="bookshelf flow">
+        {% if book.image %}
+          {% image "https://raw.githubusercontent.com/flamedfury/metadata-library/main/img/" + book.image, "An image of the book cover for the book " + book.title %}
+        {% else %}
+          {% image "https://raw.githubusercontent.com/flamedfury/metadata-library/main/img/book-" + book.isbn +".png", "An image of the book cover for the book " + book.title %}
+        {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+    </div>
+  </details>
+
+  <h2>Finished Reading</h2>
+    <div class="grid" style="--grid-min-item-size: 10rem">
+
+    {% for book in bookshelf | reverse %}
+    {% if book.status == 'finished' %}
+    <div class="bookshelf flow">
+    {% if book.image %}
+      {% image "https://raw.githubusercontent.com/flamedfury/metadata-library/main/img/" + book.image, "An image of the book cover for the book " + book.title %}
+    {% else %}
+      {% image "https://raw.githubusercontent.com/flamedfury/metadata-library/main/img/book-" + book.isbn +".png", "An image of the book cover for the book " + book.title %}
+    {% endif %}
+    </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+    
+</article>
